@@ -52,26 +52,26 @@
 
 // Ejemplo:
 
-Estudiantes =
-[   { Estudiante: "Juan", nota: 6 },
-    { Estudiante: "Mario", nota: 8 },
-    { Estudiante: "Julia", nota: 10 },
-    { Estudiante: "Sofia", nota: 2 }]
+// Estudiantes =
+// [   { Estudiante: "Juan", nota: 6 },
+//     { Estudiante: "Mario", nota: 8 },
+//     { Estudiante: "Julia", nota: 10 },
+//     { Estudiante: "Sofia", nota: 2 }]
 
-function subirnota(estudiante){
-    for(i=0; i < estudiante.length; i++){
+// function subirnota(estudiante){
+//     for(i=0; i < estudiante.length; i++){
         
-        if(estudiante[i].nota > 5 && estudiante[i].nota<=8){
-            estudiante[i].nota += 2;
-        }
-        if(estudiante[i].nota === 9){
-            estudiante[i].nota += 1;
-        }
-        return estudiante
-    }
-}
+//         if(estudiante[i].nota > 5 && estudiante[i].nota<=8){
+//             estudiante[i].nota += 2;
+//         }
+//         if(estudiante[i].nota === 9){
+//             estudiante[i].nota += 1;
+//         }
+//         return estudiante
+//     }
+// }
 
-console.table(Estudiantes);
+// console.table(Estudiantes);
 
 
 // salida=[ { Estudiante: "Juan", nota: 8 },
@@ -121,6 +121,15 @@ console.table(Estudiantes);
 //     "Soy leyenda": "Will Smith",
 //     "Bastardos sin gloria": "Brad Pitt"
 // }
+
+// let ActoresVocales2 = actoresPrincipales.filter(actores => {
+//     let fullName = actores.split(" ")
+//     const vocales = "aeiou"
+//     return fullName[0][0].toLowerCase().startswith(...vocales) || fullName[1][0].toLowerCase().startswith(...vocales)
+// })
+// console.log(actoresVocales2)
+
+
 // Iterá actoresPrincipales y llevá a actoresVocales aquellos cuyo nombre o apellido comience con una vocal.
 // Iterá sobre el Objeto actoresPrincipalesPorPelicula y agregá sus nombres y apellidos al Arreglo actoresPrincipales.
 // Iterá sobre el Objeto actoresPrincipalesPorPelicula y agregá los nombres de las películas en el Arreglo peliculas.
@@ -204,3 +213,104 @@ console.table(Estudiantes);
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
+
+const original = {
+    nombre: "Kevin",
+    pertenencias: ["cartera", "celular"]
+}
+
+let copia = {...original}
+
+const original2 = {
+    nombre: "Kevin",
+    pertenencias: "cartera",
+}
+
+
+let copia2 = {...original2}
+let copia3 = Object.assign({}, original)
+let copiaJsonStr = JSON.stringify(original)
+let copiaJsonParse = JSON.parse(copiaJsonStr)
+
+let copiaMortal = JSON.parse(JSON.stringify(original))
+let copy = JSON.stringify(12313)
+
+
+let osvaldo = {
+    nombre: "Osvaldo",
+    apellido: "Ojeda",
+}
+
+let juan = {
+    nombre: "Juan",
+    apellido: "Garcia",
+}
+
+class Persona {
+    constructor (nombre, apellido){
+        this.nombre = nombre,
+        this.apellido = apellido,
+        this.vivo = true
+    }
+    
+    saludar() {
+        return `Hola soy ${this.nombre}`
+    }
+    morir(){
+        this.vivo = false
+        return `${this.nombre} esta en el cielo`
+    }
+}
+
+function Person(nombre, apellido){
+    this.nombre = nombre,
+    this.apellido = apellido,
+    this.vivo = true,
+    this.saludar = function (){
+        return `Hola soy ${this.nombre}`
+    }   
+    this.vivo = false
+        return `${this.nombre} esta en el cielo`
+}
+
+
+const homero = new Persona("Homero", "Simpson")
+const bart = new Persona("Bart", "Simpson")
+const lisa = new Persona("Lisa", "Simpson")
+
+// Person.prototype.morir = function () {
+//     this.vivo = false
+//     return `${this.nombre} esta en el cielo`
+// }
+
+// Person.tomar = function() => {
+//     return "esta persona va a tomar duff"
+// }
+
+
+
+class Humano {
+    constructor (nombre, edad, genero, ocupacion){
+    this.nombre = nombre,
+    this.edad = edad,
+    this.genero = genero
+    }
+}
+
+class Alumnos extends Humano {
+    constructor (nombre, edad, genero, grado){
+        super(nombre, edad, genero)
+        this.grado = grado
+    }
+}
+
+class Profesor extends Humano {
+    constructor (nombre, edad, genero, materia, grado) {
+        super(nombre, edad, genero, materia, grado)
+        this.materia = materia,
+        this.grado = grado
+    }
+}
+
+let milhouse = new Alumnos("Milhouse", 10, "masculino", 4)
+let crabapple = new Profesor("Crabapple", 40, "femenino", "todas", 4)
